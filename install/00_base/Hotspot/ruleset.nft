@@ -1,0 +1,14 @@
+flush ruleset
+
+table inet ap {
+	chain routethrough {
+		type nat hook postrouting priority filter; policy accept;
+		oifname "wificard_stub" masquerade
+	}
+
+	chain fward {
+		type filter hook forward priority filter; policy accept;
+		iifname "wificard_stub" oifname "hotspotcard_stub" ct state established,related accept
+		iifname "hotspotcard_stub" oifname "wificard_stub" accept
+	}
+}

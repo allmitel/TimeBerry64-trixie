@@ -1,0 +1,21 @@
+## Espace vide ci-dessous laissé exprès. Sont en principe pris en compte les 15 dernières lignes. (sed -n 5,19p)
+## ÇA SERAIT PEUT-ÊTRE PLUS INTÉRESSANT D'UTILISER UNE COMMANDE AVEC "tail -n 15 >> nomdufichier"
+
+## DÉBUT = LIGNE EN DESSOUS
+
+# CI-DESSOUS PLANIFICATION DU LANCEMENT DU SCRIPT HEBDOMADAIRE D'UPDATE.
+# méthode :
+# mi he       j m jsem
+# 45 3        * * 0     veut dire tous les dimanches à 3h45
+30 9    * * 0   root    /usr/bin/sh /etc/renaud-RaspUpdate.sh > /home/pi/.config/renaud-RaspUpdate.log
+# CI-DESSOUS NETTOYAGE DES FICHIERS MACOS APPORTÉS PAR SAMBA.
+30 6    * * 1   root    find / \( -name ".DS_Store" -or -name ".Trashes" -or -name "._*" -or -name ".TemporaryItems" \) -delete
+
+# CI-DESSOUS EXTINCTION/RALLUMAGE DU WIFI QUOTIDIEN - pour forcer le partage de connexion du téléphone à s'éteindre
+0 1     * * *   root    /usr/bin/sh /etc/renaud-wifidown.sh >> /home/pi/.config/cron-wifi.log
+0 6     * * *   root    /usr/bin/sh /etc/renaud-wifiup.sh >> /home/pi/.config/cron-wifi.log
+# Attention cela suppose que les appels au wifi ne peuvent être effectués dans cette plage - penser à vérifier que le script crontab             
+# est cohérent du point de vue des horaires. OK au 10 août 2023
+
+# RESET AUTOMATIQUE - CHECK DU FLAG .rebootflag - > en cas de boot sur SD - lancement tous les 5 jours
+0 2     */5 * *   root    /usr/bin/sh /etc/renaud-autoreboot.sh >> /home/pi/.config/renaud-autoreboot.sh

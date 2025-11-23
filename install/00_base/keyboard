@@ -1,0 +1,13 @@
+# KEYBOARD CONFIGURATION FILE
+
+# Consult the keyboard(5) manual page.
+
+#Clavier sans fil Apple - format Macbook international
+XKBMODEL="macbook79"
+XKBLAYOUT="fr"
+#XKBVARIANT="mac"
+XKBVARIANT=""
+XKBOPTIONS="lv3:alt_switch,grp_led:caps,caps:internal_nocancel"
+
+BACKSPACE="guess"
+

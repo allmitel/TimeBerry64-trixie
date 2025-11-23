@@ -1,0 +1,31 @@
+## Fstab - modèle pour modification de fstab
+## Les espaces laissés sont volontaires !
+## le script demande les lignes 7-11 pour le boot en /dev/sda1 (espaces compris)
+## le script demande les lignes 14-19 pour les disques externes de partages (espaces compris)
+## références en ligne 25-40
+
+
+# COPIÉ À PARTIR DE LA CARTE SD
+
+#Système sur disque externe WD - sda1
+#PARTUUID=bab12a90-026b-bd43-ba59-5139c4eb9fcc   /       ext4    defaults,noatime        0       1
+
+
+#OPTION EXT4 - Disque WD - nouveau
+#/dev/sda1 Pour TimeCapsule
+UUID=dd1f58ed-d608-434d-ae36-f46783278227       /media/TimeCapsule      ext4    rw,nosuid,noauto 0 0
+#/dev/sda2 Pour partage & Transmission - ancien
+UUID=8b3b237a-003b-490a-bdc3-b2b067c67349       /media/WD  ext4    rw,nosuid,noatime,noauto 0 0
+
+## POUR RÉFÉRENCE :
+## SYS1 >> sda1
+## UUID         0fae782a-de36-47d8-af94-42d1fc899c92
+## PARTUUID     dca99f69-7b62-5140-99c2-68dc22bbd31c
+
+## TimeCapsule >> sda2
+## UUID         dd1f58ed-d608-434d-ae36-f46783278227
+## PARTUUID     90048025-3e91-4448-b773-8c4bc3ca1307
+
+## WD >> sda3
+## UUID         8b3b237a-003b-490a-bdc3-b2b067c67349
+## PARTUUID     52d78f19-2cca-2147-8990-7bc4349e7dd1

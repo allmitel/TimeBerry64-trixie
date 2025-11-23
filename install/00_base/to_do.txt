@@ -1,0 +1,7 @@
+To do
+
+Crontabs
+	> perso
+	> système
+	
+@reboot sleep 5 && mount /dev/sda2 && mount /dev/sda3 && sleep 10 && sudo service smbd start && sudo service transmission-daemon start && sleep 5 && sudo service owntone start
